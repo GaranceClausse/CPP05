@@ -6,14 +6,13 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/08/19 18:12:22 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:30:57 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-
-Bureaucrat::Bureaucrat(/* args */)
+Bureaucrat::Bureaucrat(int grade) : _grade(grade), _name("Roger")
 {
 	std::cout << "Bureaucrat constructor called" << std::endl;
 }
@@ -37,12 +36,12 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 	operator=(copy);
 }
 
-int	Bureaucrat::getGrade() const
+const int	&Bureaucrat::getGrade() const
 {
 	return this->_grade;
 }
 
-int	Bureaucrat::getName() const
+const std::string	&Bureaucrat::getName() const
 {
 	return this->_name;
 }
@@ -52,7 +51,7 @@ void	Bureaucrat::incrementGrade()
 	try
 	{
 		_grade--;
-		if (grade < 1)
+		if (_grade < 1)
 			throw (Bureaucrat::GradeTooHighException);
 	}
 	catch(Bureaucrat::GradeTooHighException& e)
@@ -67,7 +66,7 @@ void	Bureaucrat::decrementGrade()
 	try
 	{
 		_grade++;
-		if (grade > 150)
+		if (_grade > 150)
 			throw (Bureaucrat::GradeTooHighException);
 	}
 	catch(Bureaucrat::GradeTooHighException& e)

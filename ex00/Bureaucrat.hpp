@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/08/19 18:07:49 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/08/19 18:31:03 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,24 @@
 
 class Bureaucrat
 {
-	private:
-		const std::string	_name;
-		int	_grade;
 	public:
-		Bureaucrat(/* args */);
+		Bureaucrat(int grade);
 		Bureaucrat(const Bureaucrat& copy);
 		Bureaucrat &operator=(const Bureaucrat &copy);
 		~Bureaucrat();
-		std::string	getName() const;
-		int	getGrade() const;
+		const std::string	&getName() const;
+		const int	&getGrade() const;
 		void	incrementGrade(void);
 		void	decrementGrade(void);
-
+		
 		class GradeTooHighException
 		{
 		private:
 			/* data */
 		public:
-			GradeTooHighException(/* args */);
+			GradeTooHighException(/* args */) {
+				std::cout << "You can't go higher than God!" << std::endl;
+			};
 			~GradeTooHighException();
 		};
 		
@@ -57,11 +56,15 @@ class Bureaucrat
 		private:
 			/* data */
 		public:
-			GradeTooLowException(/* args */);
+			GradeTooLowException(/* args */){
+				std::cout << "You can't go lower than Satan!" << std::endl;
+			};
 			~GradeTooLowException();
 		};
-		
-		
-		
-		
+
+
+	private:
+		std::string	_name;
+		int	_grade;
+				
 };
