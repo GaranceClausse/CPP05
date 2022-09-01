@@ -14,24 +14,33 @@
 
 int	main()
 {
+	Bureaucrat* a = new Bureaucrat("Roger", 13);
+	Bureaucrat* b = new Bureaucrat("Albert", 1);
+	Bureaucrat* c = new Bureaucrat("Valerie", 150);
+
 	try
 	{
-		Bureaucrat* a = new Bureaucrat(13);
-		Bureaucrat* b = new Bureaucrat(1);
-		Bureaucrat* c = new Bureaucrat(150);
+		
 		std::cout << std::endl;
 		a->incrementGrade();
 		b->incrementGrade();
 		c->decrementGrade();
 	}
-	catch(Bureaucrat::GradeTooHighException gth) {
-		std::cout << gth.what();		
+	catch(std::exception &e) {
+		std::cout << COLOR RED << e.what() << COLOR RESET<< std::endl << std::endl;		
 	}
-	catch(Bureaucrat::GradeTooLowException gtl) {
-		std::cout << gtl.what();		
+	Bureaucrat* d = new Bureaucrat("Jean-Eude", 150);
+	try
+	{
+		
+		std::cout << std::endl;
+		d->decrementGrade();
 	}
-
-
-	
-	
+	catch(std::exception &e) {
+		std::cout << COLOR RED << e.what() << COLOR RESET<< std::endl << std::endl;			
+	}
+	delete a;
+	delete b;
+	delete c;
+	delete d;
 }

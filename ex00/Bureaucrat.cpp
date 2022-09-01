@@ -6,13 +6,13 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 16:56:03 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/01 17:15:40 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(int grade) :  _name("Roger"),_grade(grade)
+Bureaucrat::Bureaucrat(std::string name, int grade) :  _name(name),_grade(grade)
 {
 	std::cout << "Bureaucrat constructor called with name : " << _name << " and grade : "<< _grade << std::endl;
 }
@@ -48,17 +48,17 @@ const std::string	&Bureaucrat::getName() const
 
 void	Bureaucrat::incrementGrade()
 {
-	std::cout << "Let's increment the Bureaucrat grade..." << std::endl;
+	std::cout << "Let's increment the Bureaucrat " << _name << " grade..." << std::endl;
 	_grade--;
 		if (_grade < 1)
 			throw GradeTooHighException();
-	std::cout << "Bureaucrat grade is now : " << _grade << std::endl << std::endl;
+	std::cout << "Bureaucrat " << _name << " grade is now : " << _grade << std::endl << std::endl;
 
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	std::cout << "Let's decrement the Bureaucrat grade..." << std::endl;
+	std::cout << "Let's decrement the Bureaucrat " << _name << " grade..." << std::endl;
 	_grade++;
 		if (_grade > 150)
 			throw (GradeTooLowException());
