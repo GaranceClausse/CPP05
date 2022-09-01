@@ -1,29 +1,35 @@
 NAME = Bureaucrat
-OBJS = main.cpp Bureaucrat.cpp
+SRCS = main.cpp Bureaucrat.cpp
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror
+CXX = c++
+CXXFLAGS = -MMD -Wall -Wextra -Werror
 DBFLAGS = -std=c++98
 
-OBJ=$(OBJS:.cpp=.o)
+OBJ=$(addprefix $(OBJ_PATH), $(SRCS:.cpp=.o))
+OBJ_PATH = ./objs/
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) $(DBFLAGS) -o $@ -c $<
+DEPS=$(OBJ:.o=.d)
+
+$(OBJ_PATH)%.o: %.cpp
+	@mkdir -p $(OBJ_PATH)
+	$(CXX) $(CXXFLAGS) $(DBFLAGS) -o $@ -c $<
 
 all: $(NAME)
 
-debug: CFLAGS+=$(DBFLAGS)
+debug: CXXFLAGS+=$(DBFLAGS)
 debug:	$(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(DBFLAGS) $^ -o $@
+$(NAME): $(OBJ)
+	$(CXX) $(CXXFLAGS) $(DBFLAGS) $^ -o $@
 
 clean: 
-	$(RM) $(OBJ)
+	@rm -rf $(OBJ_PATH) 
 	
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean 
+	make all
 
+-include $(DEPS)
 .PHONY: all clean fclean re debug

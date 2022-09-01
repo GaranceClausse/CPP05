@@ -6,15 +6,15 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/08/19 18:30:57 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:40:34 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(int grade) : _grade(grade), _name("Roger")
+Bureaucrat::Bureaucrat(int grade) :  _name("Roger"),_grade(grade)
 {
-	std::cout << "Bureaucrat constructor called" << std::endl;
+	std::cout << "Bureaucrat constructor called with name : " << _name << " and grade : "<< _grade << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -25,8 +25,8 @@ Bureaucrat::~Bureaucrat()
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	std::cout << "Bureaucrat Operator = " << std::endl;
-	_name = copy.getName();
 	_grade = copy.getGrade();
+	_name = copy.getName();
 	return (*this);
 }
 
@@ -48,29 +48,25 @@ const std::string	&Bureaucrat::getName() const
 
 void	Bureaucrat::incrementGrade()
 {
-	try
-	{
-		_grade--;
+	std::cout << "Let's increment the Bureaucrat grade..." << std::endl;
+	_grade--;
 		if (_grade < 1)
-			throw (Bureaucrat::GradeTooHighException);
-	}
-	catch(Bureaucrat::GradeTooHighException& e)
-	{
-		std::cout << "You're already at the most important post there is!!" << std::endl;
-	}
-	
+			throw GradeTooHighException();
+	std::cout << "Bureaucrat grade is now : " << _grade << std::endl << std::endl;
+
 }
 
 void	Bureaucrat::decrementGrade()
 {
-	try
-	{
-		_grade++;
+	std::cout << "Let's decrement the Bureaucrat grade..." << std::endl;
+	_grade++;
 		if (_grade > 150)
-			throw (Bureaucrat::GradeTooHighException);
-	}
-	catch(Bureaucrat::GradeTooHighException& e)
-	{
-		std::cout << "You're already at the worst possible post!!" << std::endl;
-	}	
+			throw (Bureaucrat::GradeTooLowException());
+}
+
+std::ostream&	operator<<(std::ostream& stream, Bureaucrat const &copy)
+{
+	stream << copy.getName();
+	stream << copy.getGrade();
+	return (stream);
 }

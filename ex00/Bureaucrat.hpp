@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/08/19 18:31:03 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:41:51 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,20 @@ class Bureaucrat
 		
 		class GradeTooHighException
 		{
-		private:
-			/* data */
 		public:
-			GradeTooHighException(/* args */) {
-				std::cout << "You can't go higher than God!" << std::endl;
+			GradeTooHighException() {
+				std::cout << COLOR RED "You can't go higher than God!" COLOR RESET<< std::endl;
 			};
-			~GradeTooHighException();
+			~GradeTooHighException() {};
 		};
 		
 		class GradeTooLowException
 		{
-		private:
-			/* data */
 		public:
-			GradeTooLowException(/* args */){
-				std::cout << "You can't go lower than Satan!" << std::endl;
+			GradeTooLowException(){
+				std::cout << COLOR RED "You can't go lower than Satan!" COLOR RESET << std::endl;
 			};
-			~GradeTooLowException();
+			~GradeTooLowException(){};
 		};
 
 
@@ -68,3 +64,5 @@ class Bureaucrat
 		int	_grade;
 				
 };
+
+std::ostream&	operator<<(std::ostream& stream, Bureaucrat const &copy);

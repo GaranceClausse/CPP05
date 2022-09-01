@@ -17,12 +17,17 @@ int	main()
 	try
 	{
 		Bureaucrat* a = new Bureaucrat(13);
+		Bureaucrat* b = new Bureaucrat(1);
+		Bureaucrat* c = new Bureaucrat(150);
+		std::cout << std::endl;
 		a->incrementGrade();
+		b->incrementGrade();
+		c->decrementGrade();
 	}
-	catch(Bureaucrat::GradeTooHighException)
-	{
-		std::cout << "ya qqc que jai pas compris..." << std::endl;
+	catch(Bureaucrat::GradeTooHighException()) {
+		
 	}
+
 
 	
 	
