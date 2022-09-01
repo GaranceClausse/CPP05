@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 16:41:51 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:52:00 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,17 @@ class Bureaucrat
 		class GradeTooHighException
 		{
 		public:
-			GradeTooHighException() {
-				std::cout << COLOR RED "You can't go higher than God!" COLOR RESET<< std::endl;
-			};
-			~GradeTooHighException() {};
+			std::string what() {
+				return "You can't go higher than God!";
+			}
 		};
 		
 		class GradeTooLowException
 		{
 		public:
-			GradeTooLowException(){
-				std::cout << COLOR RED "You can't go lower than Satan!" COLOR RESET << std::endl;
+			std::string what(){
+				return "You can't go lower than Satan!";
 			};
-			~GradeTooLowException(){};
 		};
 
 

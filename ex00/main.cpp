@@ -24,8 +24,11 @@ int	main()
 		b->incrementGrade();
 		c->decrementGrade();
 	}
-	catch(Bureaucrat::GradeTooHighException()) {
-		
+	catch(Bureaucrat::GradeTooHighException gth) {
+		std::cout << gth.what();		
+	}
+	catch(Bureaucrat::GradeTooLowException gtl) {
+		std::cout << gtl.what();		
 	}
 
 

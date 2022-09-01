@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 16:40:34 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/01 16:56:03 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Bureaucrat::decrementGrade()
 	std::cout << "Let's decrement the Bureaucrat grade..." << std::endl;
 	_grade++;
 		if (_grade > 150)
-			throw (Bureaucrat::GradeTooLowException());
+			throw (GradeTooLowException());
 }
 
 std::ostream&	operator<<(std::ostream& stream, Bureaucrat const &copy)
