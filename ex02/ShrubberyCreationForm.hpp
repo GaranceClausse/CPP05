@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:11:41 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:19:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:27:47 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class ShrubberyCreationForm
+class ShrubberyCreationForm : public Form
 {
 private:
 	/* data */

@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class PresidentialPardonForm
+class PresidentialPardonForm : public Form
 {
 	private:
 		/* data */

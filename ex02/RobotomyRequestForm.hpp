@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class RobotomyRequestForm
+class RobotomyRequestForm : public Form
 {
 	private:
 		/* data */

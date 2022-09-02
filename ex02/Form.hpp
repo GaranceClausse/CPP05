@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:20:12 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:29:02 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Bureaucrat;
 
 class Form
 {
-	private:
+	protected:
 		std::string _name;
 		bool	_sign;
 		int		_sign_grade;
@@ -30,7 +30,7 @@ class Form
 		Form(std::string name, int sign_grade, int exec_grade);
 		Form(const Form& copy);
 		Form &operator=(const Form &copy);
-		~Form();
+		virtual ~Form();
 
 		virtual std::string	getName(void) const = 0;
 		virtual bool	getSigned(void) const = 0;
