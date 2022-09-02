@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:21:22 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:24:44 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presi
 
 }
 
-void		PresidentialPardonForm::execute()
+void		PresidentialPardonForm::action()
 {
 		std::cout << _target << " has been forgiven by Zaphod Beeblebrox" << std::endl;
 

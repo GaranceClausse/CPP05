@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:21:59 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:24:44 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbe
 		
 }
 
-void			ShrubberyCreationForm::execute()
+void			ShrubberyCreationForm::action()
 {
 	std::ofstream MyFile(this->getTarget() + "_shrubbery");
 	MyFile << "Ascii tree";

@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:36:07 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:38:53 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,26 @@ int		Form::getExecGrade(void) const
 void	Form::beSigned(Bureaucrat *rob)
 {
 	if (this->_sign_grade < rob->getGrade())
+{		std::cout << "Form must be signed by someoone with higher rank" << std::endl;
 		throw (Form::GradeTooLowException());
+}
 	else {
 		_sign = true;
 		}	
 }
 
+void Form::execute(Bureaucrat const & executor) const
+{
+	if (_exec_grade < executor.getGrade())
+	{		
+		std::cout << "Form must be executed by someone with higher rank" << std::endl;
+		throw (GradeTooLowException());
+	}
+	else if (_sign == false)
+		std::cout << "Form must be signed to be executed" << std::endl;
+	else
+		this->action();
+}
 
 std::ostream&	operator<<(std::ostream& stream, Form const &copy)
 {

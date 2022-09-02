@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 14:38:21 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:38:04 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ class Form
 		int		getSignGrade(void) const;
 		int		getExecGrade(void) const;
 		virtual void	beSigned(Bureaucrat *rob) = 0;
+		virtual void			action() = 0;
+		void execute(Bureaucrat const & executor) const;
 
 	class GradeTooHighException : public std::exception
 	{

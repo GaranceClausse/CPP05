@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : virtual public Form
 {
 	private:
 		std::string _target;
@@ -26,7 +26,7 @@ class PresidentialPardonForm : public Form
 
 
 		virtual void	beSigned(Bureaucrat *rob);
-		void			execute();
+		virtual void			action();
 		std::string	PresidentialPardonForm::getTarget(void) const;
 
 };

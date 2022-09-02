@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:23:31 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:24:44 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 
 	
 }
 
-void		RobotomyRequestForm::execute()
+void		RobotomyRequestForm::action()
 {
 	std::cout << "BRRRRROOOOM *** CRICKCRICK " << std::endl;
 	if ((rand() % 2) + 1 ==  2)

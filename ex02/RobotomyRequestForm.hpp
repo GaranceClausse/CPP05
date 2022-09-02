@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : virtual public Form
 {
 	private:
 		std::string _target;
@@ -25,7 +25,7 @@ class RobotomyRequestForm : public Form
 		virtual ~RobotomyRequestForm();
 
 		virtual void	beSigned(Bureaucrat *rob);
-		void			execute();
+		virtual void			action();
 		std::string	RobotomyRequestForm::getTarget(void) const;
 
 };
