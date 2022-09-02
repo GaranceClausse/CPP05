@@ -6,14 +6,14 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:27:13 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:37:34 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm() : _name("Shrubbery"), _sign(false), _sign_grade(145), _exec_grade(137)
+ShrubberyCreationForm::ShrubberyCreationForm() : Form("Shrubbery",false, 145, 137)
 {
 	std::cout << "ShrubberyCreationForm constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
 }

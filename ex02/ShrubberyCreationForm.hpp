@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:11:41 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:27:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:33:03 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ public:
 	ShrubberyCreationForm(/* args */);
 	ShrubberyCreationForm(const ShrubberyCreationForm& copy);
 	ShrubberyCreationForm &operator=(const ShrubberyCreationForm &copy);
-	~ShrubberyCreationForm();
+	virtual ~ShrubberyCreationForm();
 
 
-	std::string	getName(void) const;
-	bool	getSigned(void) const;
-	int		getSignGrade(void) const;
-	int		getExecGrade(void) const;
-	void	beSigned(Bureaucrat *rob);
+	virtual std::string	getName(void) const;
+	virtual bool	getSigned(void) const;
+	virtual int		getSignGrade(void) const;
+	virtual int		getExecGrade(void) const;
+	virtual void	beSigned(Bureaucrat *rob);
 };

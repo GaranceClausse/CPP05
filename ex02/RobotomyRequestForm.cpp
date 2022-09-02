@@ -13,7 +13,7 @@
 #include "RobotomyRequestRobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm() : _name("Robotomy"), _sign(false), _sign_grade(72), _exec_grade(137)
+RobotomyRequestForm::RobotomyRequestForm() : Form("Robotomy", false, 72, 137)
 {
 	std::cout << "RobotomyRequestForm constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
 }

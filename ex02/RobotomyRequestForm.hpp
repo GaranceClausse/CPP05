@@ -22,12 +22,12 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm(/* args */);
 		RobotomyRequestForm(const RobotomyRequestForm& copy);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
-		~RobotomyRequestForm();
+		virtual ~RobotomyRequestForm();
 
 
-		std::string	getName(void) const;
-		bool	getSigned(void) const;
-		int		getSignGrade(void) const;
-		int		getExecGrade(void) const;
-		void	beSigned(Bureaucrat *rob);
+		virtual std::string	getName(void) const;
+		virtual bool	getSigned(void) const;
+		virtual int		getSignGrade(void) const;
+		virtual int		getExecGrade(void) const;
+		virtual void	beSigned(Bureaucrat *rob);
 };

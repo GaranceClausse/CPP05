@@ -6,14 +6,14 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 12:28:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 13:36:07 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 
-Form::Form(std::string name, int sign_grade, int exec_grade) : _name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
+Form::Form(std::string name, bool _sign, int sign_grade, int exec_grade) : _name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
 	std::cout << "Form constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
 }
