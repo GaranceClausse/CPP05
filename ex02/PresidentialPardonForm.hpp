@@ -19,15 +19,14 @@ class PresidentialPardonForm : public Form
 	private:
 		std::string _target;
 	public:
-		PresidentialPardonForm(/* args */);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &copy);
 		virtual ~PresidentialPardonForm();
 
 
-		virtual std::string	getName(void) const;
-		virtual bool	getSigned(void) const;
-		virtual int		getSignGrade(void) const;
-		virtual int		getExecGrade(void) const;
 		virtual void	beSigned(Bureaucrat *rob);
+		void			execute();
+		std::string	PresidentialPardonForm::getTarget(void) const;
+
 };

@@ -17,17 +17,15 @@
 class RobotomyRequestForm : public Form
 {
 	private:
-		/* data */
+		std::string _target;
 	public:
-		RobotomyRequestForm(/* args */);
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm& copy);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &copy);
 		virtual ~RobotomyRequestForm();
 
-
-		virtual std::string	getName(void) const;
-		virtual bool	getSigned(void) const;
-		virtual int		getSignGrade(void) const;
-		virtual int		getExecGrade(void) const;
 		virtual void	beSigned(Bureaucrat *rob);
+		void			execute();
+		std::string	RobotomyRequestForm::getTarget(void) const;
+
 };

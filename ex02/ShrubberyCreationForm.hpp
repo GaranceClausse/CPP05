@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:11:41 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 14:37:52 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:22:14 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ public:
 	virtual ~ShrubberyCreationForm();
 
 	virtual void	beSigned(Bureaucrat *rob);
+			void			execute();
+
 	std::string	ShrubberyCreationForm::getTarget(void) const;
 };

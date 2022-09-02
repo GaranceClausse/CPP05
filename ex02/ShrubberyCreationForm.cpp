@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 14:44:23 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:21:59 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,16 @@
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery",false, 145, 137), _target(target)
 {
 	std::cout << "ShrubberyCreationForm constructor called with name " << _name << " sign grade " << _sign_grade << " and exec grade " << _exec_grade << std::endl;
+		
 }
+
+void			ShrubberyCreationForm::execute()
+{
+	std::ofstream MyFile(this->getTarget() + "_shrubbery");
+	MyFile << "Ascii tree";
+  	MyFile.close();
+}
+
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
@@ -48,12 +57,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) 
 
 void	ShrubberyCreationForm::beSigned(Bureaucrat *rob)
 {
-	if (this->_sign_grade < rob->getGrade())
+	if (this->_sign_grade < rob->getGrade() || this->_exec_grade < rob->getGrade())
 		throw (ShrubberyCreationForm::GradeTooLowException());
 	else {
-		_sign = true;
-		std::ofstream MyFile(this->getTarget() + "_shrubbery");
-		MyFile << "Ascii tree";
-  		MyFile.close();				
+		_sign = true;		
 		}	
 }

@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestRobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:18:01 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 15:23:31 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RobotomyRequestRobotomyRequestForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm() : Form("Robotomy", false, 72, 137)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", false, 72, 45), _target(target)
 {
 	std::cout << "RobotomyRequestForm constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
+	
+}
+
+void		RobotomyRequestForm::execute()
+{
+	std::cout << "BRRRRROOOOM *** CRICKCRICK " << std::endl;
+	if ((rand() % 2) + 1 ==  2)
+		std::cout << _target << " has been lobotomised... " << std::endl;
+	else 
+		std::cout << _target << " lobotomisation failed... " << std::endl;
+
+
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -34,7 +46,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& c
 	return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)  : Form("Robotomy", false, 72, 45)
 {
 	std::cout <<COLOR  B_GREEN "RobotomyRequestForm Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);
@@ -47,9 +59,10 @@ std::string	RobotomyRequestForm::getTarget(void) const
 
 void	RobotomyRequestForm::beSigned(Bureaucrat *rob)
 {
-	if (this->_sign_grade < rob->getGrade())
+	if (this->_sign_grade < rob->getGrade() || this->_exec_grade < rob->getGrade())
 		throw (RobotomyRequestForm::GradeTooLowException());
 	else {
 		_sign = true;
+		
 		}	
 }
