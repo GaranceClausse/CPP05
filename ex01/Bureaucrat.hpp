@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 17:13:46 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 12:15:58 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
 
 #define COLOR "\033[;"
 #define RED "31m"
@@ -28,6 +29,8 @@
 #define B_BLUE	"44m"
 #define RESET "\033[0m"
 
+class Form;
+
 class Bureaucrat
 {
 	public:
@@ -39,6 +42,7 @@ class Bureaucrat
 		const int	&getGrade() const;
 		void	incrementGrade(void);
 		void	decrementGrade(void);
+		void	signForm(Form* form);
 		
 		class GradeTooHighException : public std::exception
 		{
