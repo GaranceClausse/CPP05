@@ -6,16 +6,16 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:37:34 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:44:23 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("Shrubbery",false, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery",false, 145, 137), _target(target)
 {
-	std::cout << "ShrubberyCreationForm constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
+	std::cout << "ShrubberyCreationForm constructor called with name " << _name << " sign grade " << _sign_grade << " and exec grade " << _exec_grade << std::endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
@@ -30,34 +30,20 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	_name = copy.getName();
 	_sign = copy.getSigned();
 	_exec_grade = copy.getExecGrade();
+	_target = copy.getTarget();
 	return (*this);
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy)
+
+std::string	ShrubberyCreationForm::getTarget(void) const
+{
+	return this->_target;
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form("Shrubbery",false, 145, 137)
 {
 	std::cout <<COLOR  B_GREEN "ShrubberyCreationForm Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);
-}
-
-std::string	ShrubberyCreationForm::getName(void) const
-{
-	return this->_name;
-}
-
-bool	ShrubberyCreationForm::getSigned(void) const
-{
-	return this->_sign;
-}
-
-
-int		ShrubberyCreationForm::getSignGrade(void) const
-{
-	return this->_sign_grade;
-}
-
-int		ShrubberyCreationForm::getExecGrade(void) const
-{
-	return this->_exec_grade;
 }
 
 void	ShrubberyCreationForm::beSigned(Bureaucrat *rob)
@@ -66,5 +52,8 @@ void	ShrubberyCreationForm::beSigned(Bureaucrat *rob)
 		throw (ShrubberyCreationForm::GradeTooLowException());
 	else {
 		_sign = true;
+		std::ofstream MyFile(this->getTarget() + "_shrubbery");
+		MyFile << "Ascii tree";
+  		MyFile.close();				
 		}	
 }

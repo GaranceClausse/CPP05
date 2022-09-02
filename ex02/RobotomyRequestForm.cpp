@@ -30,6 +30,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& c
 	_name = copy.getName();
 	_sign = copy.getSigned();
 	_exec_grade = copy.getExecGrade();
+	_target = copy.getTarget();
 	return (*this);
 }
 
@@ -39,25 +40,9 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)
 	operator=(copy);
 }
 
-std::string	RobotomyRequestForm::getName(void) const
+std::string	RobotomyRequestForm::getTarget(void) const
 {
-	return this->_name;
-}
-
-bool	RobotomyRequestForm::getSigned(void) const
-{
-	return this->_sign;
-}
-
-
-int		RobotomyRequestForm::getSignGrade(void) const
-{
-	return this->_sign_grade;
-}
-
-int		RobotomyRequestForm::getExecGrade(void) const
-{
-	return this->_exec_grade;
+	return this->_target;
 }
 
 void	RobotomyRequestForm::beSigned(Bureaucrat *rob)

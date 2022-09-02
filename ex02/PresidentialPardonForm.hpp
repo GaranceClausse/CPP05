@@ -17,7 +17,7 @@
 class PresidentialPardonForm : public Form
 {
 	private:
-		/* data */
+		std::string _target;
 	public:
 		PresidentialPardonForm(/* args */);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);

@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:36:22 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/02 14:38:21 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "Bureaucrat.hpp"
 #include <string>
 #include <iostream>
+
+#include <fstream>
 
 class Bureaucrat;
 
@@ -32,10 +34,10 @@ class Form
 		Form &operator=(const Form &copy);
 		virtual ~Form();
 
-		virtual std::string	getName(void) const = 0;
-		virtual bool	getSigned(void) const = 0;
-		virtual int		getSignGrade(void) const = 0;
-		virtual int		getExecGrade(void) const = 0;
+		std::string	getName(void) const;
+		bool	getSigned(void) const;
+		int		getSignGrade(void) const;
+		int		getExecGrade(void) const;
 		virtual void	beSigned(Bureaucrat *rob) = 0;
 
 	class GradeTooHighException : public std::exception
