@@ -6,15 +6,17 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:11:41 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:38:15 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 10:25:54 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include "Form.hpp"
+#include <fstream>
 
-class ShrubberyCreationForm : virtual public Form
+
+class ShrubberyCreationForm : public Form
 {
 private:
 		std::string _target;
@@ -25,7 +27,6 @@ public:
 	virtual ~ShrubberyCreationForm();
 
 	virtual void	beSigned(Bureaucrat *rob);
-	virtual void			action();
-
-	std::string	ShrubberyCreationForm::getTarget(void) const;
+	virtual void execute(Bureaucrat const & executor) const;
+	std::string	getTarget(void) const;
 };

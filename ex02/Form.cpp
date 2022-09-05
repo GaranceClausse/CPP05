@@ -6,16 +6,16 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:38:53 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 10:20:02 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
 
-Form::Form(std::string name, bool _sign, int sign_grade, int exec_grade) : _name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
+Form::Form(std::string name, int sign_grade, int exec_grade) : _name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
-	std::cout << "Form constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
+	std::cout << "Form constructor called with name " << _name << " and sign grade " << _sign_grade << " exec grade " << _exec_grade << std::endl;
 }
 
 Form::~Form()
@@ -80,8 +80,6 @@ void Form::execute(Bureaucrat const & executor) const
 	}
 	else if (_sign == false)
 		std::cout << "Form must be signed to be executed" << std::endl;
-	else
-		this->action();
 }
 
 std::ostream&	operator<<(std::ostream& stream, Form const &copy)

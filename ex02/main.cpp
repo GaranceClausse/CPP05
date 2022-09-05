@@ -11,11 +11,14 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int	main()
 {
 	Bureaucrat* a = new Bureaucrat("Roger", 13);
-	Form*	form1 = new Form("Stupid form", 12, 6);
+	Form*	form1 = new ShrubberyCreationForm("Paul");
 
 	try
 	{		

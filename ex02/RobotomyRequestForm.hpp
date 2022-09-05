@@ -12,6 +12,7 @@
 
 #pragma once
 
+#include <stdlib.h>  
 #include "Form.hpp"
 
 class RobotomyRequestForm : virtual public Form
@@ -25,7 +26,7 @@ class RobotomyRequestForm : virtual public Form
 		virtual ~RobotomyRequestForm();
 
 		virtual void	beSigned(Bureaucrat *rob);
-		virtual void			action();
-		std::string	RobotomyRequestForm::getTarget(void) const;
+		virtual void execute(Bureaucrat const & executor) const;
+		std::string	getTarget(void) const;
 
 };

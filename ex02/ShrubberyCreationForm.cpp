@@ -6,26 +6,34 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 15:24:44 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 10:40:47 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery",false, 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery", 145, 137), _target(target)
 {
 	std::cout << "ShrubberyCreationForm constructor called with name " << _name << " sign grade " << _sign_grade << " and exec grade " << _exec_grade << std::endl;
 		
 }
 
-void			ShrubberyCreationForm::action()
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	std::ofstream MyFile(this->getTarget() + "_shrubbery");
-	MyFile << "Ascii tree";
-  	MyFile.close();
+	std::string str = this->getTarget() + "_shrubbery";
+	const char *file_name = str.c_str();
+	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
+	{
+		std::ofstream MyFile(file_name);
+		if (!MyFile)
+			return ;
+		MyFile << "Ascii tree";
+  		MyFile.close();
+	}
+	else
+		throw (GradeTooLowException());
 }
-
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
@@ -49,7 +57,7 @@ std::string	ShrubberyCreationForm::getTarget(void) const
 	return this->_target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form("Shrubbery",false, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form("Shrubbery", 145, 137)
 {
 	std::cout <<COLOR  B_GREEN "ShrubberyCreationForm Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);

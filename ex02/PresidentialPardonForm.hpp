@@ -26,7 +26,7 @@ class PresidentialPardonForm : virtual public Form
 
 
 		virtual void	beSigned(Bureaucrat *rob);
-		virtual void			action();
-		std::string	PresidentialPardonForm::getTarget(void) const;
+		virtual void execute(Bureaucrat const & executor) const;
+		std::string	getTarget(void) const;
 
 };
