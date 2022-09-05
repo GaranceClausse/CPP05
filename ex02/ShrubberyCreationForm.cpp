@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 12:15:15 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:05:23 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	const char *file_name = str.c_str();
 	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
 	{
-		std::cout << _name << " form has been executed by " << this->getTarget() << " and file " << this->getTarget() << "_shrubbery has been created" << std::endl;
+		std::cout << _name << " form has been executed by " << executor.getName() << " and file " << this->getTarget() << "_shrubbery has been created" << std::endl;
 		std::ofstream MyFile(file_name);
 		if (!MyFile)
 			return ;

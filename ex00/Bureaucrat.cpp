@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 17:15:40 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:13:53 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) :  _name(name),_grade(grade)
 
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "Bureaucrat destructor called" << std::endl;
+	std::cout << "Bureaucrat " << _name << " destructor called" << std::endl;
 }
 
 Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& copy)

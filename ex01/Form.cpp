@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 12:28:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:22:01 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Form::Form(std::string name, int sign_grade, int exec_grade) : _name(name), _sig
 
 Form::~Form()
 {
-	std::cout << "Form destructor called" << std::endl;
+	std::cout << "Form " << _name << " destructor called" << std::endl;
 }
 
 Form&	Form::operator=(Form const& copy)
