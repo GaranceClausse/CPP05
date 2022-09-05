@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 10:42:48 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:08:25 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,13 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 
 
 void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << COLOR MAGENTA << executor.getName() << " will try to execute the form " << _name << COLOR RESET << std::endl;
+	if (this->_sign == false)
+		throw (NeedToBeSignedException());
 	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
 	{
 		std::cout << "BRRRRROOOOM *** CRICKCRICK " << std::endl;
-		if ((rand() % 2) + 1 ==  2)
+		if ((rand() % 2) + 1 ==  1)
 			std::cout << _target << " has been lobotomised... " << std::endl;
 		else 
 			std::cout << _target << " lobotomisation failed... " << std::endl;
@@ -62,8 +65,9 @@ std::string	RobotomyRequestForm::getTarget(void) const
 
 void	RobotomyRequestForm::beSigned(Bureaucrat *rob)
 {
-	if (this->_sign_grade < rob->getGrade() || this->_exec_grade < rob->getGrade())
-		throw (RobotomyRequestForm::GradeTooLowException());
+	std::cout << "Let's try to sign the form" << std::endl;
+	if (this->_sign_grade < rob->getGrade())
+		throw (GradeTooLowException());
 	else {
 		_sign = true;
 		

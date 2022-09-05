@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 10:40:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:15:15 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,31 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbe
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	std::cout << COLOR MAGENTA << executor.getName() << " will try to execute the form " << _name << COLOR RESET << std::endl;
+	if (this->_sign == false)
+		throw (NeedToBeSignedException());
 	std::string str = this->getTarget() + "_shrubbery";
 	const char *file_name = str.c_str();
 	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
 	{
+		std::cout << _name << " form has been executed by " << this->getTarget() << " and file " << this->getTarget() << "_shrubbery has been created" << std::endl;
 		std::ofstream MyFile(file_name);
 		if (!MyFile)
 			return ;
-		MyFile << "Ascii tree";
+		MyFile << "                 # #### ####			" << std::endl;
+        MyFile << "               ### \\/#|### |/####		" << std::endl;
+        MyFile << "              ##\\/#/ \\||/##/_/##/_#	" << std::endl;
+        MyFile << "            ###  \\/###|/ \\/ # ###	" << std::endl;
+        MyFile << "          ##_\\_#\\_\\## | #/###_/_####" << std::endl;
+        MyFile << "         ## #### # \\ #| /  #### ##/##	" << std::endl;
+        MyFile << "          __#_--###`  |{,###---###-~	" << std::endl;
+        MyFile << "                    \\ }{				" << std::endl;
+        MyFile << "                     }}{				" << std::endl;
+        MyFile << "                     }}{				" << std::endl;
+        MyFile << "                     {{}				" << std::endl;
+        MyFile << "               , -=-~{ .-^- _			" << std::endl;
+        MyFile << "                     `}				" << std::endl;
+        MyFile << "                      {				" << std::endl;
   		MyFile.close();
 	}
 	else
@@ -65,8 +82,9 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) 
 
 void	ShrubberyCreationForm::beSigned(Bureaucrat *rob)
 {
-	if (this->_sign_grade < rob->getGrade() || this->_exec_grade < rob->getGrade())
-		throw (ShrubberyCreationForm::GradeTooLowException());
+	std::cout << "Let's try to sign the form" << std::endl;
+	if (this->_sign_grade < rob->getGrade())
+		throw (GradeTooLowException());
 	else {
 		_sign = true;		
 		}	

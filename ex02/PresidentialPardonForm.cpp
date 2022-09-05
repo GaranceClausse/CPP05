@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 10:43:32 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:08:33 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardon", 145, 137), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("PresidentialPardon", 25, 5), _target(target)
 {
 	std::cout << "PresidentialPardonForm constructor called with name " << _name << " and sign grade " << _sign_grade << std::endl;
 
@@ -22,7 +22,10 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presi
 
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
+	std::cout << COLOR MAGENTA << executor.getName() << " will try to execute the form " << _name << COLOR RESET << std::endl;
+	if (this->_sign == false)
+		throw (NeedToBeSignedException());
+	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade())
 	{
 		std::cout << _target << " has been forgiven by Zaphod Beeblebrox" << std::endl;
 	}
@@ -46,7 +49,7 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 	return (*this);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form("PresidentialPardon", 145, 137)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form("PresidentialPardon", 25, 5)
 {
 	std::cout <<COLOR  B_GREEN "PresidentialPardonForm Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);
@@ -60,8 +63,9 @@ std::string	PresidentialPardonForm::getTarget(void) const
 
 void	PresidentialPardonForm::beSigned(Bureaucrat *rob)
 {
+	std::cout << "Let's try to sign the form" << std::endl;
 	if (this->_sign_grade < rob->getGrade())
-		throw (PresidentialPardonForm::GradeTooLowException());
+		throw (GradeTooLowException());
 	else {
 		_sign = true;
 		}	

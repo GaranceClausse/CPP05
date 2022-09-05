@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 10:20:16 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 12:06:08 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class Form
 	{
 	public:
 		virtual const char * what()  const throw() {
-			return (char *)"You're too high!!";
+			return (char *)"You're too high already!!";
 		}
 	};
 	
@@ -53,8 +53,15 @@ class Form
 	{
 	public:
 		virtual const char * what() const throw() {
-			return (char *)"You're too low!!'";
+			return (char *)"Your grade is too low!! Sorry loser";
 		};
+	};
+	class NeedToBeSignedException : public std::exception
+	{
+	public:
+		virtual const char * what()  const throw() {
+			return (char *)"Can't execute an unsigned file dumbass";
+		}
 	};
 };
 
