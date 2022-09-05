@@ -85,7 +85,6 @@ int	main()
 		
 		std::cout << "Form is now signed? " << (form2->getSigned() ? COLOR GREEN "yes" : COLOR RED "no" ) << COLOR RESET << std::endl<< std::endl;
 		form2->execute(cpy);
-		form2->execute(cpy);
 		std::cout << std::endl;
 	}
 	catch(std::exception &e) {

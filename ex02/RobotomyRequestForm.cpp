@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 12:08:25 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:39:05 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
 	{
 		std::cout << "BRRRRROOOOM *** CRICKCRICK " << std::endl;
-		if ((rand() % 2) + 1 ==  1)
+		srand( time( NULL ) );
+		if ((rand() % 2 + 1) ==  1)
 			std::cout << _target << " has been lobotomised... " << std::endl;
 		else 
 			std::cout << _target << " lobotomisation failed... " << std::endl;
