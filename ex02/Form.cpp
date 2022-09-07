@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:37:48 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:45:57 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,12 @@ const char * Form::GradeTooLowException::what() const throw() {
 const char * Form::NeedToBeSignedException::what() const throw() {
 				return (char *)"Can't execute an unsigned file dumbass";
 			};
+					
+const char * Form::IsSignedException::what() const throw() {
+				return (char *)"This file has already been signed!";
+			};
 
-Form::Form(const Form &copy)
+Form::Form(const Form &copy) 
 {
 	std::cout <<COLOR  B_GREEN "Form Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);
@@ -79,8 +83,11 @@ int		Form::getExecGrade(void) const
 
 void	Form::beSigned(Bureaucrat *rob)
 {
-	if (this->_sign_grade < rob->getGrade())
-{		std::cout << "Form must be signed by someoone with higher rank" << std::endl;
+	std::cout << "Let's try to sign the form" << std::endl;
+	if (_sign == true)
+		throw (Form::IsSignedException());
+	else if (this->_sign_grade < rob->getGrade())
+{		std::cout << "Form must be signed by someone with higher rank" << std::endl;
 		throw (Form::GradeTooLowException());
 }
 	else {

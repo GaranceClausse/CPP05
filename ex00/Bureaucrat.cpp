@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:44:47 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:58:18 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,10 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	std::cout << "Bureaucrat Operator = " << std::endl;
 	_grade = copy.getGrade();
-	_name = copy.getName();
 	return (*this);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name)
 {
 	std::cout <<COLOR  B_GREEN "Bureaucrat Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);

@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:28:22 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:46:13 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	std::cout << COLOR MAGENTA << executor.getName() << " will try to execute the form " << _name << COLOR RESET << std::endl;
 	if (this->_sign == false)
 		throw (NeedToBeSignedException());
-	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade())
+	if (executor.getGrade() <= this->getExecGrade())
 	{
 		std::cout << _target << " has been forgiven by Zaphod Beeblebrox" << std::endl;
 	}
@@ -53,10 +53,9 @@ PresidentialPardonForm&	PresidentialPardonForm::operator=(PresidentialPardonForm
 	return (*this);
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form("PresidentialPardon", 25, 5)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copy) : Form(copy), _target(copy._target)
 {
 	std::cout <<COLOR  B_GREEN "PresidentialPardonForm Copy constructor" COLOR RESET  << std::endl;
-	operator=(copy);
 }
 
 

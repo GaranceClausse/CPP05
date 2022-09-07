@@ -15,7 +15,7 @@
 #include <stdlib.h>  
 #include "Form.hpp"
 
-class RobotomyRequestForm : virtual public Form
+class RobotomyRequestForm : public Form
 {
 	private:
 		std::string _target;

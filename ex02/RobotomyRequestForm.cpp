@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:29:04 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:46:32 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 	std::cout << COLOR MAGENTA << executor.getName() << " will try to execute the form " << _name << COLOR RESET << std::endl;
 	if (this->_sign == false)
 		throw (NeedToBeSignedException());
-	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
+	if (executor.getGrade() <= this->getExecGrade())
 	{
 		std::cout << "BRRRRROOOOM *** CRICKCRICK " << std::endl;
 		srand( time( NULL ) );
@@ -59,10 +59,9 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(RobotomyRequestForm const& c
 	return (*this);
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)  : Form("Robotomy", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy)  : Form(copy), _target(copy._target)
 {
 	std::cout <<COLOR  B_GREEN "RobotomyRequestForm Copy constructor" COLOR RESET  << std::endl;
-	operator=(copy);
 }
 
 std::string	RobotomyRequestForm::getTarget(void) const

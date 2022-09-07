@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:35:50 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:48:02 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ class Bureaucrat
 
 
 	private:
-		std::string	_name;
+		const std::string	_name;
 		int	_grade;
 				
 };

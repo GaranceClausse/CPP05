@@ -14,7 +14,7 @@
 
 #include "Form.hpp"
 
-class PresidentialPardonForm : virtual public Form
+class PresidentialPardonForm : public Form
 {
 	private:
 		std::string _target;

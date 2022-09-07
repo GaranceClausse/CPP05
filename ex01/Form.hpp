@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:38:27 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:31:08 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ class Form
 	public:
 		virtual const char * what()  const throw();
 	};
+	class IsSignedException : public std::exception
+	{
+	public:
+		virtual const char * what()  const throw();
 	};
 };
 

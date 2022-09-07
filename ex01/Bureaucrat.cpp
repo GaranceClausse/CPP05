@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:45:01 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 14:00:01 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& copy)
 {
 	std::cout << "Bureaucrat Operator = " << std::endl;
 	_grade = copy.getGrade();
-	_name = copy.getName();
 	return (*this);
 }
 
@@ -47,11 +46,11 @@ const char * Bureaucrat::GradeTooHighException::what()  const throw() {
 			}
 		
 const char * Bureaucrat::GradeTooLowException::what() const throw() {
-				return (char *)"You can't go lower than Satan!";
+				return (char *)"Your grade is too low, loser";
 			};
 
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy)
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy._name)
 {
 	std::cout <<COLOR  B_GREEN "Bureaucrat Copy constructor" COLOR RESET  << std::endl;
 	operator=(copy);
@@ -91,7 +90,10 @@ void	Bureaucrat::decrementGrade()
 void	Bureaucrat::signForm(Form* form)
 {
 	if (this->getGrade() > form->getSignGrade())
-		std::cout << this->getName() << " couldn't sign the form " << form->getName() << " because its grade is too low!" << std::endl;
+	{
+		std::cout << this->getName() << " couldn't sign the form " << form->getName() << std::endl;
+		throw (GradeTooLowException());
+	}
 	else
 	{
 		form->beSigned(this);

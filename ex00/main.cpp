@@ -30,8 +30,10 @@ int	main()
 	catch(std::exception &e) {
 		std::cout << COLOR RED << e.what() << COLOR RESET<< std::endl << std::endl;		
 	}
-	std::cout << *b;
+	Bureaucrat* k;
 	Bureaucrat* d = new Bureaucrat("Jean-Eude", 150);
+	k = d;
+	std::cout << *k;
 	try
 	{
 		

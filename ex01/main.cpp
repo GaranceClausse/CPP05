@@ -34,6 +34,7 @@ int	main()
 		a->signForm(form1);
 		std::cout << "Form is now signed? "  << (form1->getSigned() ? COLOR GREEN "yes" : COLOR RED "no"  ) << COLOR RESET << std::endl;
 		std::cout << std::endl;
+		a->signForm(form1);
 	}
 	catch(std::exception &e) {
 		std::cout << COLOR RED << e.what() << COLOR RESET<< std::endl << std::endl;		

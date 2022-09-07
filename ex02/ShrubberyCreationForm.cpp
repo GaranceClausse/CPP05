@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 13:12:53 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/07 12:28:51 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 13:46:45 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw (NeedToBeSignedException());
 	std::string str = this->getTarget() + "_shrubbery";
 	const char *file_name = str.c_str();
-	if (executor.getGrade() <= this->getExecGrade() && executor.getGrade() <= this->getSignGrade() && this->_sign == true)
+	if (executor.getGrade() <= this->getExecGrade())
 	{
 		std::cout << _name << " form has been executed by " << executor.getName() << " and file " << this->getTarget() << "_shrubbery has been created" << std::endl;
 		std::ofstream MyFile(file_name);
@@ -80,10 +80,9 @@ std::string	ShrubberyCreationForm::getTarget(void) const
 	return this->_target;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form("Shrubbery", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy), _target(copy._target)
 {
 	std::cout <<COLOR  B_GREEN "ShrubberyCreationForm Copy constructor" COLOR RESET  << std::endl;
-	operator=(copy);
 }
 
 void	ShrubberyCreationForm::beSigned(Bureaucrat *rob)
