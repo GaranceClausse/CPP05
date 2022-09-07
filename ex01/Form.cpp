@@ -6,12 +6,17 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:15 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 12:22:01 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:38:41 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
+
+Form::Form()
+{
+	std::cout << "Form default constructor called " << std::endl;
+}
 
 Form::Form(std::string name, int sign_grade, int exec_grade) : _name(name), _sign(false), _sign_grade(sign_grade), _exec_grade(exec_grade)
 {
@@ -33,6 +38,18 @@ Form&	Form::operator=(Form const& copy)
 	return (*this);
 }
 
+const char * Form::GradeTooHighException::what()  const throw() {
+				return (char *)"You're too high already!!";
+			}
+		
+const char * Form::GradeTooLowException::what() const throw() {
+				return (char *)"Your grade is too low!! Sorry loser";
+			};
+		
+const char * Form::NeedToBeSignedException::what() const throw() {
+				return (char *)"Can't execute an unsigned file dumbass";
+			};
+			
 Form::Form(const Form &copy)
 {
 	std::cout <<COLOR  B_GREEN "Form Copy constructor" COLOR RESET  << std::endl;

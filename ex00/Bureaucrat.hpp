@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:29 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/01 17:13:46 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:35:50 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 class Bureaucrat
 {
 	public:
+		Bureaucrat();
 		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat& copy);
 		Bureaucrat &operator=(const Bureaucrat &copy);
@@ -43,17 +44,13 @@ class Bureaucrat
 		class GradeTooHighException : public std::exception
 		{
 		public:
-			virtual const char * what()  const throw() {
-				return (char *)"You can't go higher than God!";
-			}
+			virtual const char * what()  const throw();
 		};
 		
 		class GradeTooLowException : public std::exception
 		{
 		public:
-			virtual const char * what() const throw() {
-				return (char *)"You can't go lower than Satan!";
-			};
+			virtual const char * what() const throw();
 		};
 
 

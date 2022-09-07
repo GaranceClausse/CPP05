@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 17:17:34 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/02 13:28:36 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:38:27 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class Form
 		int		_exec_grade;
 		
 	public:
+		Form();
 		Form(std::string name, int sign_grade, int exec_grade);
 		Form(const Form& copy);
 		Form &operator=(const Form &copy);
@@ -41,17 +42,19 @@ class Form
 	class GradeTooHighException : public std::exception
 	{
 	public:
-		virtual const char * what()  const throw() {
-			return (char *)"You're too high!!";
-		}
+		virtual const char * what()  const throw();
 	};
 	
 	class GradeTooLowException : public std::exception
 	{
 	public:
-		virtual const char * what() const throw() {
-			return (char *)"You're too low!!'";
-		};
+		virtual const char * what() const throw() ;
+	};
+	class NeedToBeSignedException : public std::exception
+	{
+	public:
+		virtual const char * what()  const throw();
+	};
 	};
 };
 

@@ -6,15 +6,25 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/05 12:21:30 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/07 12:45:06 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat()
+{
+	std::cout << "Bureaucrat default constructor "  << std::endl;
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) :  _name(name),_grade(grade)
 {
-	std::cout << "Bureaucrat constructor called with name : " << _name << " and grade : "<< _grade << std::endl;
+	if (_grade < 1)
+		throw (Bureaucrat::GradeTooLowException());
+	else if (_grade > 150)
+		throw (Bureaucrat::GradeTooHighException());
+	else
+		std::cout << "Bureaucrat constructor called with name : " << _name << " and grade : "<< _grade << std::endl;
 }
 
 Bureaucrat::~Bureaucrat()
@@ -29,6 +39,15 @@ Bureaucrat&	Bureaucrat::operator=(Bureaucrat const& copy)
 	_name = copy.getName();
 	return (*this);
 }
+
+const char * Bureaucrat::GradeTooHighException::what()  const throw() {
+				return (char *)"You can't go higher than God!";
+			}
+		
+const char * Bureaucrat::GradeTooLowException::what() const throw() {
+				return (char *)"You can't go lower than Satan!";
+			};
+
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy)
 {
@@ -49,9 +68,10 @@ const std::string	&Bureaucrat::getName() const
 void	Bureaucrat::incrementGrade()
 {
 	std::cout << "Let's increment the Bureaucrat " << _name << " grade..." << std::endl;
-	_grade--;
-		if (_grade < 1)
-			throw GradeTooHighException();
+	if (_grade <= 1)
+		throw GradeTooHighException();
+	else	
+		_grade--;
 	std::cout << "Bureaucrat " << _name << " grade is now : " << _grade << std::endl << std::endl;
 
 }
@@ -59,9 +79,11 @@ void	Bureaucrat::incrementGrade()
 void	Bureaucrat::decrementGrade()
 {
 	std::cout << "Let's decrement the Bureaucrat " << _name << " grade..." << std::endl;
-	_grade++;
-		if (_grade > 150)
-			throw (GradeTooLowException());
+	if (_grade >= 150)
+		throw (GradeTooLowException());
+	else
+		_grade++;
+	std::cout << "Bureaucrat " << _name << " grade is now : " << _grade << std::endl << std::endl;
 }
 
 void	Bureaucrat::signForm(Form* form)
@@ -78,7 +100,7 @@ void	Bureaucrat::signForm(Form* form)
 
 std::ostream&	operator<<(std::ostream& stream, Bureaucrat const &copy)
 {
-	stream << copy.getName();
-	stream << copy.getGrade();
+	stream << copy.getName() << ", bureaucrat grade ";
+	stream << copy.getGrade() << std::endl;
 	return (stream);
 }

@@ -19,6 +19,7 @@ class PresidentialPardonForm : virtual public Form
 	private:
 		std::string _target;
 	public:
+		PresidentialPardonForm();
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &copy);

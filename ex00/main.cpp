@@ -18,6 +18,7 @@ int	main()
 	Bureaucrat* b = new Bureaucrat("Albert", 1);
 	Bureaucrat* c = new Bureaucrat("Valerie", 150);
 
+
 	try
 	{
 		
@@ -29,6 +30,7 @@ int	main()
 	catch(std::exception &e) {
 		std::cout << COLOR RED << e.what() << COLOR RESET<< std::endl << std::endl;		
 	}
+	std::cout << *b;
 	Bureaucrat* d = new Bureaucrat("Jean-Eude", 150);
 	try
 	{
