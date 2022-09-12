@@ -18,7 +18,6 @@ int	main()
 	Bureaucrat* b = new Bureaucrat("Albert", 1);
 	Bureaucrat* c = new Bureaucrat("Valerie", 150);
 
-
 	try
 	{
 		

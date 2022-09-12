@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:59:22 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/12 14:54:19 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:18:10 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,10 @@ Intern::~Intern()
 Form	*Intern::makeForm(std::string form, std::string target)
 {
 	Form * random_form(NULL);
-	std::string tab[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
+	std::string tab[4] = {"presidential pardon", "robotomy request", "shrubbery creation", "invalid"};
 	int i = 0;
-	while (i < 4)
-	{
-		if (i < 3 && form.compare(tab[i]) == 0)
-			break ;
-		else i++;
-	}
+	while (i < 4 && form.compare(tab[i]) != 0)
+		i++;
 	switch (i)
 	{
 		case 0:

@@ -23,7 +23,8 @@ $(NAME): $(OBJ)
 	$(CXX) $(CXXFLAGS) $(DBFLAGS) $^ -o $@
 
 clean: 
-	@rm -rf $(OBJ_PATH) 
+	@rm -rf $(OBJ_PATH)
+	@rm *_shrubbery
 	
 fclean: clean
 	$(RM) $(NAME)

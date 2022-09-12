@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:59:24 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/12 14:24:45 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:04:29 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,10 @@ class Intern
 		Intern &operator=(const Intern &copy);
 		~Intern();
 		Form	*makeForm(std::string form, std::string target);
+		class NotAForm : public std::exception
+	{
+	public:
+		virtual const char * what()  const throw();
+	};
 						
 };
