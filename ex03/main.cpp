@@ -51,5 +51,18 @@ int	main()
 	Intern someRandomIntern;
 	Form* form2;
 	form2 = someRandomIntern.makeForm("shrubbery cration", "Bender");
-	launch_exec(form2);	
+	launch_exec(form2);
+		std::cout << std::endl;
+	Form* form3;
+	form3 = someRandomIntern.makeForm("shrubbery creation", "Tree");
+	launch_exec(form3);
+		std::cout << std::endl;
+	Form* form4;
+	form4 = someRandomIntern.makeForm("robotomy request", "Robot");
+	launch_exec(form4);
+		std::cout << std::endl;
+	Form* form5;
+	form5 = someRandomIntern.makeForm("presidential pardon", "macron");
+	launch_exec(form5);
+	
 }

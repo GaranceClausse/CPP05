@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:59:22 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/12 15:43:24 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/12 16:00:48 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ Intern::~Intern()
 	std::cout << "Intern destructor called" << std::endl;
 }
 
+Intern::Intern(const Intern& copy)
+{
+	std::cout <<COLOR  B_GREEN "Intern Copy constructor" COLOR RESET  << std::endl;
+	*this = copy;
+}
+
+Intern& Intern::operator=(const Intern &copy)
+{
+	std::cout << "Intern Operator = " << std::endl;
+	(void)copy;
+	return *this;
+}
+
 static Form	*newPPForm(std::string const &str)
 {
 	return (new PresidentialPardonForm(str));
@@ -30,12 +43,12 @@ static Form	*newPPForm(std::string const &str)
 
 static Form	*newRRForm(std::string const &str)
 {
-	return (new PresidentialPardonForm(str));
+	return (new RobotomyRequestForm(str));
 }
 
 static Form	*newSCForm(std::string const &str)
 {
-	return (new PresidentialPardonForm(str));
+	return (new ShrubberyCreationForm(str));
 }
 
 Form	*Intern::makeForm(std::string form, std::string target)
