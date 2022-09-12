@@ -16,14 +16,12 @@
 #include "RobotomyRequestForm.hpp"
 #include "Intern.hpp"
 
-int	main()
+void	launch_exec(Form * form2)
 {
-
-	Intern someRandomIntern;
+	if (form2 == NULL)
+		return ;
 	Bureaucrat* office2 = new Bureaucrat("Patrick", 38);
 	const Bureaucrat &cpy = *office2;
-	Form* form2;
-	form2 = someRandomIntern.makeForm("shrubbery creation", "Bender");
 	try
 	{		
 		std::cout << std::endl;
@@ -45,4 +43,13 @@ int	main()
 	}
 	delete form2;
 	delete office2;
+}
+
+int	main()
+{
+
+	Intern someRandomIntern;
+	Form* form2;
+	form2 = someRandomIntern.makeForm("shrubbery cration", "Bender");
+	launch_exec(form2);	
 }

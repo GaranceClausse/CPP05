@@ -6,7 +6,7 @@
 /*   By: gclausse <gclausse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/19 17:52:12 by gclausse          #+#    #+#             */
-/*   Updated: 2022/09/12 15:01:06 by gclausse         ###   ########.fr       */
+/*   Updated: 2022/09/12 15:23:15 by gclausse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	Bureaucrat::decrementGrade()
 
 void	Bureaucrat::signForm(Form* form)
 {
+	if (form == NULL)
+		return ;
 	if (this->getGrade() > form->getSignGrade())
 	{
 		std::cout << this->getName() << " couldn't sign the form " << form->getName() << " because its grade is too low!" << std::endl;
